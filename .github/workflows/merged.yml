@@ -28,7 +28,6 @@ env:
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
     # if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     steps:

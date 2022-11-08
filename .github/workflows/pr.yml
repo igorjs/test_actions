@@ -24,8 +24,6 @@ env:
 
 jobs:
   create-release-pr:
-    needs: lint-and-test
-    name: Create Release PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
