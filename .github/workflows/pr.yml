@@ -38,7 +38,7 @@ jobs:
         id: meta
         shell: bash
         run: |
-          echo "package_version=$(date +'%-y.%-m.%-d-alpha.%-M%-S')" >> "$GITHUB_OUTPUT"
+          echo "package_version=$(date +'%-y.%-m.%-d-alpha.%-H%-M%-S')" >> "$GITHUB_OUTPUT"
 
       - name: create commit
         shell: bash
