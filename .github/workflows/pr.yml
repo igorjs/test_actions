@@ -21,6 +21,7 @@ concurrency:
 env:
   TZ: "Australia/Sydney"
   LANG: "en_AU.UTF-8"
+  GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
   create-release-pr:
