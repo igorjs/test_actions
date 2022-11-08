@@ -47,7 +47,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git checkout -b "$RELEASE_BRANCH"
-          echo "Latest stable version: $NPM_PACKAGE_VERSION" > .version
+          echo "$NPM_PACKAGE_VERSION" > .version
           git add .
           git status
           git commit -a -m "chore(release): version $NPM_PACKAGE_VERSION"
