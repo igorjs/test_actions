@@ -1,0 +1,38 @@
+name: merged
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+    paths:
+      - ".version"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  actions: write
+  contents: write
+  packages: write
+  pull-requests: write
+  repository-projects: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TZ: "Australia/Sydney"
+  LANG: "en_AU.UTF-8"
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    # if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    steps:
+      - run: |
+          echo ${{ toJson(github.event) }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
