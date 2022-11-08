@@ -29,7 +29,7 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    if: github.event.pull_request.head.ref == 'chore/create-release' && github.event.pull_request.merged == true
     steps:
       - run: |
           echo ${{ toJson(github.event) }}
