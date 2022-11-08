@@ -33,8 +33,8 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      - name: Get metadata
-        id: meta
+
+      - name: create commit
         shell: bash
         run: |
           branch="chore/create-release"
@@ -56,8 +56,7 @@ jobs:
 
           git push origin "$branch" --force-with-lease
 
-      - name: Get metadata
-        id: meta
+      - name: create pull request
         shell: bash
         run: |
           package_version=$(date +'%-y.%-m.%-d')
