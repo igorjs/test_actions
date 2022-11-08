@@ -1,8 +1,11 @@
 name: merged
 
 on:
-  pull_request:
-  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+    paths:
+      - ".version"
 
 permissions:
   issues: write
@@ -23,10 +26,7 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: |
-      github.event.action == 'closed' &&
-      github.event.pull_request.merged == true &&
-      github.event.pull_request.head.ref == 'chore/create-release'
+    if: contains(github.event.head_commit.message, 'chore(release)')
     steps:
       - run: |
           echo ${{ toJson(github.event) }}
